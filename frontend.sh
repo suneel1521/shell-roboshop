@@ -1,8 +1,10 @@
 #!/bin/bash
+set -e
 userid=$(id -u)
 if [ $userid -ne 0 ]
 then
     echo "ERROR you dont have root permissions plese switch to root user"
+    exit 1
 else
     echo "you have a root access proceed now"
 fi
@@ -39,5 +41,5 @@ echo "open html file"
 unzip /tmp/frontend.zip
 echo "unzip the frontend code here"
 
-cp nginx.conf /etc/nginx/nginx.conf
+cp /home/ec2-user/shell-roboshop/nginx.conf /etc/nginx/nginx.conf
 systemctl restart nginx 
